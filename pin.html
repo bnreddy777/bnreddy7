@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMPin</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #img{
+            padding: 30px;
+        }
+    </style>
+    <script>
+        var data ={
+            pin:"909909",
+        };
+        var chance= 3;
+
+        function submit(){
+            for(var i=0; i<=3; i++){
+                var pin1 = document.getElementById("pinnum").value;
+                if(chance==0){
+                    alert("Card Declined");
+                document.getElementById("pinnum").disabled=true;
+                document.querySelector("p").innerHTML="Refers and try again".fontcolor('red');
+                break;
+                }
+                else if(data.pin===pin1){
+                   document.write("Login Success");
+                   const img = document.createElement("img");
+                   img.src = "../../public/images/1a.jpg";
+                   document.body.appendChild(img);
+                }
+                else{
+                chance=chance-1;
+                document.querySelector("p").innerHTML=`Invlid PinNumber ${chance} attempts left.`.fontcolor('red');
+                return;
+                }
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid mt-3 bg-black" onload="bodyload()">
+    <span class="label d-flex justify-content-center align-items-center fs-4"></span>
+    <nav class="nav d-flex justify-content-center align-items-center p-5">
+        <div class="card w-50 p-3 d-flex justify-content-center align-items-center shadow-sm bg-dark text-light">
+            Enter Your PIN : <input type="password" id="pinnum" placeholder="Enter PIN">
+            <p></p>
+            <br><br>
+            <div class="text-center">
+                <button class="btn btn-primary" onclick="submit()">SUBMIT</button>
+            </div>  
+        </div>
+    </nav>
+
+
+    <link rel="stylesheet" href="../../node_modules/jquery/dist/jquery.js">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js">
+</body>
+</html>
